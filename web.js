@@ -1,15 +1,21 @@
 var express = require('express');
 var fs = require('fs');
-var buffer = new Buffer();
 var app = express.createServer(express.logger());
 
-fs.readFileSync('index.html', function (err, data) {
-  if (err) throw err;
-  console.log(data);
-  buffer.write(data, "utf-8")
-  var content = buffer.toString('utf-8');
-});
+//function readContent(callback) {
+ //   fs.readFile("index.html", function (err, content) {
+  //      if (err) return callback(err)
+   //     callback(content)
+   // })
+//}
 
+//readContent(function (content) {
+// console.log(content)
+
+//})
+
+var content = fs.readFileSync('index.html', 'utf-8');
+console.log(content)
 
 app.get('/', function(request, response) {
   response.send(content);
